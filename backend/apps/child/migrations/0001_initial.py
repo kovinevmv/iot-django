@@ -8,23 +8,56 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
             name='Child',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, help_text='Дата/время создания объекта, автоматически заполняется')),
-                ('updated_at', models.DateTimeField(auto_now=True, help_text='Дата/время обновления объекта, автоматически изменяется при изменении полей объекта')),
-                ('deleted_at', models.DateTimeField(blank=True, default=None, help_text='Дата/время удаления объекта, рекомендуется использовать данную метку для удаления, а не SQL DELETE команду', null=True)),
-                ('first_name', models.CharField(help_text='Имя человека', max_length=255)),
-                ('last_name', models.CharField(help_text='Фамилия человека', max_length=255)),
-                ('middle_name', models.CharField(help_text='Отчество человека', max_length=255, null=True)),
-                ('snils', models.CharField(help_text='СНИЛС человека, 11 цифр', max_length=11, validators=[backend.apps.core.models.is_digit_string])),
-                ('gender', models.CharField(choices=[('М', 'М'), ('Ж', 'Ж')], help_text='Пол - М/Ж', max_length=15)),
-                ('birth_date', models.DateField(help_text='Дата рождения', null=True)),
+                ('id',
+                 models.BigAutoField(auto_created=True,
+                                     primary_key=True,
+                                     serialize=False,
+                                     verbose_name='ID')),
+                ('created_at',
+                 models.DateTimeField(
+                     auto_now_add=True,
+                     help_text=
+                     'Дата/время создания объекта, автоматически заполняется')
+                 ),
+                ('updated_at',
+                 models.DateTimeField(
+                     auto_now=True,
+                     help_text=
+                     'Дата/время обновления объекта, автоматически изменяется при изменении полей объекта'
+                 )),
+                ('deleted_at',
+                 models.DateTimeField(
+                     blank=True,
+                     default=None,
+                     help_text=
+                     'Дата/время удаления объекта, рекомендуется использовать данную метку для удаления, а не SQL DELETE команду',
+                     null=True)),
+                ('first_name',
+                 models.CharField(help_text='Имя человека', max_length=255)),
+                ('last_name',
+                 models.CharField(help_text='Фамилия человека',
+                                  max_length=255)),
+                ('middle_name',
+                 models.CharField(help_text='Отчество человека',
+                                  max_length=255,
+                                  null=True)),
+                ('snils',
+                 models.CharField(
+                     help_text='СНИЛС человека, 11 цифр',
+                     max_length=11,
+                     validators=[backend.apps.core.models.is_digit_string])),
+                ('gender',
+                 models.CharField(choices=[('М', 'М'), ('Ж', 'Ж')],
+                                  help_text='Пол - М/Ж',
+                                  max_length=15)),
+                ('birth_date',
+                 models.DateField(help_text='Дата рождения', null=True)),
             ],
             options={
                 'db_table': 'child',

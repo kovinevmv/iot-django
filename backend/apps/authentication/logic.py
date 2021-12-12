@@ -6,7 +6,8 @@ class AuthenticationLogic(BaseBackend):
     """
     Custom Email Backend to perform authentication via email
     """
-    def authenticate(self, request, email=None, password=None):
+    def authenticate(self, request, username=None, email=None, password=None):
+        email = username if username and not email else email
         user_model = get_user_model()
         try:
             # Try to fetch the user by searching email field
@@ -16,7 +17,7 @@ class AuthenticationLogic(BaseBackend):
         except user_model.DoesNotExist:
             return None  # return None if custom user model does not exist
         except Exception as e:
-            LoggerDB.error(e)
+            print(e)
             return None  # return None in case of other exceptions
 
     def get_user(self, user_id):

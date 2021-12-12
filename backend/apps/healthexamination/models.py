@@ -1,4 +1,3 @@
-
 from django.db import models
 
 from backend.apps.core.models import TimestampedModel

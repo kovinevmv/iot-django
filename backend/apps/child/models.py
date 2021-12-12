@@ -2,7 +2,6 @@ from backend.apps.core.models import TimestampedModel, AbstractPerson
 
 
 class Child(AbstractPerson, TimestampedModel):
-
     class Meta:
         db_table = 'child'
 

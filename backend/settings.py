@@ -11,22 +11,12 @@ SECRET_KEY = _SECRET_KEY
 DEBUG = _DEBUG
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'corsheaders',
-    'phonenumber_field',
-    'backend.apps.authentication',
-    'backend.apps.core',
-    'backend.apps.parent',
-    'backend.apps.child',
-    'backend.apps.vaccination',
-    'backend.apps.analysis',
-    'backend.apps.healthexamination'
-    
+    'django.contrib.admin', 'django.contrib.auth',
+    'django.contrib.contenttypes', 'django.contrib.sessions',
+    'django.contrib.messages', 'django.contrib.staticfiles', 'corsheaders',
+    'phonenumber_field', 'backend.apps.authentication', 'backend.apps.core',
+    'backend.apps.parent', 'backend.apps.child', 'backend.apps.vaccination',
+    'backend.apps.analysis', 'backend.apps.healthexamination'
 ]
 
 MIDDLEWARE = [
@@ -36,8 +26,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware'
 ]
 
 # URLs

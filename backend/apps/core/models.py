@@ -15,9 +15,9 @@ def get_or_none(model, **kwargs):
 
 class TimestampedModelManager(models.Manager):
     def get_queryset(self):
-        # Автоматическая фильтрация удаленных моделей через deletedAt
+        # Автоматическая фильтрация удаленных моделей через deleted_at
         return super(TimestampedModelManager,
-                     self).get_queryset().filter(deletedAt__isnull=True)
+                     self).get_queryset().filter(deleted_at__isnull=True)
 
 
 class TimestampedModel(models.Model):
@@ -50,7 +50,7 @@ class TimestampedModel(models.Model):
 
 def is_digit_string(value):
     """ Проверка что строка - 11 цифр """
-    if not value or isinstance(value, str):
+    if not value or not isinstance(value, str):
         raise ValidationError('СНИЛС - это строка')
     if not re.search(r'^\d{11}$', value):
         raise ValidationError('СНИЛС содержит 11 цифр')
@@ -68,7 +68,9 @@ class AbstractPerson(models.Model):
     last_name = models.CharField(max_length=255, help_text='Фамилия человека')
     middle_name = models.CharField(max_length=255,
                                    help_text='Отчество человека',
-                                   null=True)
+                                   null=True,
+                                   blank=True,
+                                   default=None)
 
     snils = models.CharField(max_length=11,
                              help_text='СНИЛС человека, 11 цифр',
@@ -124,7 +126,6 @@ class UserAuth(models.Model):
 
     class Meta:
         abstract = True
-        # db_table = 'user'
 
     def __str__(self):
         return f'User<email={self.email}>'

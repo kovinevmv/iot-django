@@ -7,12 +7,15 @@ from backend.apps.child.models import Child
 from backend.apps.core.models import TimestampedModel, UserAuth, AbstractPerson
 
 
-class Parent(UserAuth, AbstractPerson, AbstractBaseUser, PermissionsMixin, TimestampedModel):
+class Parent(UserAuth, AbstractPerson, AbstractBaseUser, PermissionsMixin,
+             TimestampedModel):
 
     phone_number = PhoneNumberField(null=True)
-    send_messages = models.BooleanField(default=True, help_text='Присылать оповещения о новых событиях?')
+    send_messages = models.BooleanField(
+        default=True, help_text='Присылать оповещения о новых событиях?')
 
     USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
 
     children = models.ManyToManyField(Child)
 
@@ -20,4 +23,4 @@ class Parent(UserAuth, AbstractPerson, AbstractBaseUser, PermissionsMixin, Times
         db_table = 'parent'
 
     def __str__(self):
-        return f'Parent<id={self.id}, email={self.email}>'
+        return f'Parent<id={self.id}, fullname={self.email}>'

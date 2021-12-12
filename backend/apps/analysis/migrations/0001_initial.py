@@ -16,15 +16,39 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Analysis',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('created_at', models.DateTimeField(auto_now_add=True, help_text='Дата/время создания объекта, автоматически заполняется')),
-                ('updated_at', models.DateTimeField(auto_now=True, help_text='Дата/время обновления объекта, автоматически изменяется при изменении полей объекта')),
-                ('deleted_at', models.DateTimeField(blank=True, default=None, help_text='Дата/время удаления объекта, рекомендуется использовать данную метку для удаления, а не SQL DELETE команду', null=True)),
+                ('id',
+                 models.BigAutoField(auto_created=True,
+                                     primary_key=True,
+                                     serialize=False,
+                                     verbose_name='ID')),
+                ('created_at',
+                 models.DateTimeField(
+                     auto_now_add=True,
+                     help_text=
+                     'Дата/время создания объекта, автоматически заполняется')
+                 ),
+                ('updated_at',
+                 models.DateTimeField(
+                     auto_now=True,
+                     help_text=
+                     'Дата/время обновления объекта, автоматически изменяется при изменении полей объекта'
+                 )),
+                ('deleted_at',
+                 models.DateTimeField(
+                     blank=True,
+                     default=None,
+                     help_text=
+                     'Дата/время удаления объекта, рекомендуется использовать данную метку для удаления, а не SQL DELETE команду',
+                     null=True)),
                 ('date', models.DateField(help_text='Дата анализа')),
-                ('name', models.CharField(help_text='Название анализа', max_length=100)),
+                ('name',
+                 models.CharField(help_text='Название анализа',
+                                  max_length=100)),
                 ('parametr', models.FloatField(help_text='Доза')),
                 ('reaction', models.CharField(max_length=255)),
-                ('child', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='child.child')),
+                ('child',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                   to='child.child')),
             ],
             options={
                 'db_table': 'analysis',

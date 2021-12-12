@@ -1,0 +1,18 @@
+version: "2.3"
+services:
+  postgresql:
+    volumes:
+      - './postgresql_data:/bitnami/postgresql'
+    ports:
+      - '${DB_PORT}:5432'
+    image: 'bitnami/postgresql:latest'
+    environment:
+      - POSTGRESQL_REPLICATION_USER=${DB_USER}
+      - POSTGRESQL_REPLICATION_PASSWORD=${DB_PASSWORD}
+      - POSTGRESQL_USERNAME=${DB_USER}
+      - POSTGRESQL_MASTER_PORT_NUMBER=${DB_PORT}
+      - POSTGRESQL_PASSWORD=${DB_PASSWORD}
+      - POSTGRESQL_DATABASE=${DB_NAME}
+
+volumes:
+  postgresql_data:
